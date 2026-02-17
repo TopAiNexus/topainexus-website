@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TopAiNexus — Agenție AI din România. Automatizări AI, Receptionist AI, Chatbot AI pentru afacerea ta.">
+<title>TopAiNexus — Automatizări AI pentru Afacerea Ta</title>
+
+<!-- Retell Chat Widget -->
+<script
+  id="retell-widget"
+  src="https://dashboard.retellai.com/retell-widget.js"
+  type="module"
+  data-public-key="public_key_8b8484a792b31b261533c"
+  data-agent-id="agent_3e1477ea1b6cda20e3ef8f7b44"
+  data-agent-version="0"
+  data-title="Maria — TopAiNexus"
+></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #080C14;
+  --surface: #0D1421;
+  --surface2: #111927;
+  --border: rgba(255,255,255,0.07);
+  --accent: #2563EB;
+  --accent2: #0EA5E9;
+  --accent-glow: rgba(37,99,235,0.25);
+  --text: #F0F4FF;
+  --muted: #8899BB;
+  --success: #10B981;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:1000;
+  opacity:0.4;
+}
+
+/* ── GRID BACKGROUND ── */
+body::after {
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 24px;
+  backdrop-filter: blur(20px);
+  background: rgba(8,12,20,0.85);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-dot {
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--accent);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,100%{opacity:1} 50%{opacity:0.4}
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  background: var(--accent);
+  color: white !important;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 14px !important;
+  transition: all 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: #1d4ed8 !important;
+  color: white !important;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 80px;
+  text-align: center;
+  z-index: 1;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(37,99,235,0.1);
+  border: 1px solid rgba(37,99,235,0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: var(--accent2);
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s ease both;
+}
+
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--accent2);
+  border-radius: 50%;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(42px, 7vw, 80px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.65;
+  font-weight: 300;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 24px rgba(37,99,235,0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(37,99,235,0.4);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--muted);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255,255,255,0.2);
+  color: var(--text);
+}
+
+/* Stats bar */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 32px 24px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.stat-num span { color: var(--accent); }
+.stat-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ── SECTIONS ── */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 96px 24px;
+}
+
+.container { max-width: 1100px; margin: 0 auto; }
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 16px;
+}
+
+.section-tag::before {
+  content:'';
+  width: 20px; height: 1px;
+  background: var(--accent2);
+}
+
+h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+h2 span {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.65;
+  font-weight: 300;
+  margin-bottom: 56px;
+}
+
+/* ── SERVICES GRID ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.service-card:hover {
+  border-color: rgba(37,99,235,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-icon {
+  width: 48px; height: 48px;
+  background: rgba(37,99,235,0.1);
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.service-features {
+  list-style: none;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.service-features li {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-features li::before {
+  content: '✓';
+  color: var(--success);
+  font-weight: 700;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+/* ── DEMO SECTION ── */
+.demo-section {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.demo-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.demo-visual {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+}
+
+.demo-visual-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.demo-avatar {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.demo-name { font-weight: 600; font-size: 15px; }
+.demo-status { font-size: 12px; color: var(--success); }
+
+.chat-bubble {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  max-width: 85%;
+}
+
+.chat-bubble.ai {
+  background: rgba(37,99,235,0.1);
+  border: 1px solid rgba(37,99,235,0.2);
+  color: var(--text);
+}
+
+.chat-bubble.user {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  margin-left: auto;
+}
+
+.typing {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+  background: rgba(37,99,235,0.1);
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.typing span {
+  width: 6px; height: 6px;
+  background: var(--accent2);
+  border-radius: 50%;
+  animation: typing 1.2s ease-in-out infinite;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0%,100%{transform:translateY(0);opacity:0.4}
+  50%{transform:translateY(-4px);opacity:1}
+}
+
+.demo-cta-box { }
+.demo-cta-box .section-tag { display: flex; }
+
+/* ── SECURITY SECTION ── */
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.security-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.security-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.security-card h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.security-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── CONTACT SECTION ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.contact-info { }
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-item:last-child { border-bottom: none; }
+
+.contact-icon {
+  width: 40px; height: 40px;
+  background: rgba(37,99,235,0.1);
+  border: 1px solid rgba(37,99,235,0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.contact-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.contact-value a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-value a:hover { color: var(--accent2); }
+
+/* Contact form */
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.form-group { margin-bottom: 16px; }
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: rgba(37,99,235,0.5);
+}
+
+.form-group select option { background: var(--surface2); }
+
+.form-group textarea { height: 100px; }
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 40px 24px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--text); }
+
+.footer-copy {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── CERT BADGE ── */
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(16,185,129,0.08);
+  border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-top: 24px;
+}
+
+.cert-icon { font-size: 22px; }
+.cert-text { font-size: 13px; color: var(--success); font-weight: 500; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── MOBILE ── */
+@media(max-width:768px) {
+  .nav-links { display:none; }
+  .demo-inner { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:1fr; }
+  .stats-bar { gap:24px; }
+  section { padding: 64px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-dot"></div>
+      TopAiNexus
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicii">Servicii</a></li>
+      <li><a href="#demo">Demo Live</a></li>
+      <li><a href="#securitate">Securitate</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Începe Acum</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Agenție AI · Timișoara, România
+    </div>
+    <h1>
+      Automatizează-ți<br>
+      Afacerea cu <span>Inteligență Artificială</span>
+    </h1>
+    <p class="hero-sub">
+      Receptionist AI, Chatbot AI și automatizări complete pentru afacerea ta. Răspunzi 24/7, fără personal suplimentar.
+    </p>
+    <div class="hero-actions">
+      <a href="#demo" class="btn-primary">
+        🤖 Testează Maria Live
+      </a>
+      <a href="#contact" class="btn-ghost">
+        Contactează-ne →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">24<span>/7</span></div>
+    <div class="stat-label">Disponibilitate</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num"><span>&lt;</span>1s</div>
+    <div class="stat-label">Timp de răspuns</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100<span>%</span></div>
+    <div class="stat-label">Personalizat</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0</div>
+    <div class="stat-label">Personal suplimentar</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="servicii">
+  <div class="container">
+    <div class="section-tag">Servicii</div>
+    <h2>Ce oferim <span>clinicilor și afacerilor</span></h2>
+    <p class="section-sub">Soluții AI complete, integrate direct în fluxul tău de lucru. Fără complicații tehnice.</p>
+
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">🎙️</div>
+        <h3>Receptionist AI (Voce)</h3>
+        <p>Agentul tău vocal preia apeluri, răspunde la întrebări și face programări automat, non-stop.</p>
+        <ul class="service-features">
+          <li>Răspunde la apeluri 24/7</li>
+          <li>Face programări automat</li>
+          <li>Trimite SMS de confirmare</li>
+          <li>Integrare Google Calendar</li>
+        </ul>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">💬</div>
+        <h3>Chatbot AI (Web)</h3>
+        <p>Widget de chat inteligent pe site-ul tău. Răspunde instant la orice întrebare, în limba română.</p>
+        <ul class="service-features">
+          <li>Instalare într-o linie de cod</li>
+          <li>Răspunsuri personalizate</li>
+          <li>Face programări prin chat</li>
+          <li>Disponibil oricând</li>
+        </ul>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">⚙️</div>
+        <h3>Automatizări Complete</h3>
+        <p>Conectăm AI-ul cu sistemele tale existente. CRM, calendar, SMS, email — totul automatizat.</p>
+        <ul class="service-features">
+          <li>Integrare cu orice CRM</li>
+          <li>SMS automate Vonage</li>
+          <li>Notificări instant</li>
+          <li>Rapoarte și statistici</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO SECTION -->
+<section id="demo" class="demo-section">
+  <div class="container">
+    <div class="demo-inner">
+      <div class="demo-visual fade-up">
+        <div class="demo-visual-header">
+          <div class="demo-avatar">🤖</div>
+          <div>
+            <div class="demo-name">Maria — AI Receptionist</div>
+            <div class="demo-status">● Online acum</div>
+          </div>
+        </div>
+
+        <div class="chat-bubble ai">
+          Bună ziua! Sunt Maria, asistentul virtual al clinicii. Cu ce vă pot ajuta astăzi?
+        </div>
+        <div class="chat-bubble user">
+          Vreau să fac o programare.
+        </div>
+        <div class="chat-bubble ai">
+          Cu plăcere! Vă pot programa pentru săptămâna aceasta. Aveți o preferință de zi sau oră?
+        </div>
+        <div class="chat-bubble user">
+          Joi dimineața.
+        </div>
+        <div class="typing">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="demo-cta-box fade-up">
+        <div class="section-tag">Demo Live</div>
+        <h2>Testează <span>Maria</span> chiar acum</h2>
+        <p class="section-sub" style="margin-bottom:24px;">
+          Două moduri de a testa — chat pe site sau apel vocal real. Exact ce vor primi clienții tăi.
+        </p>
+
+        <!-- Chat demo -->
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:12px;">
+          <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">💬 Chat pe site</div>
+          <div style="font-size:14px;color:var(--text);margin-bottom:12px;">Apasă iconița de chat din <strong>colțul dreapta jos</strong> al acestei pagini.</div>
+          <div style="font-size:12px;color:var(--success);">● Maria este online acum</div>
+        </div>
+
+        <!-- Voice demo -->
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:24px;">
+          <div style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;">🎙️ Apel vocal real</div>
+          <div style="font-size:14px;color:var(--text);margin-bottom:12px;">Sună direct și vorbește cu agentul AI:</div>
+          <a href="tel:+40373819798" class="btn-primary" style="display:inline-flex;font-size:14px;padding:10px 20px;">
+            📞 +40 373 819 798
+          </a>
+        </div>
+
+        <a href="#contact" class="btn-primary" style="display:inline-flex;width:100%;justify-content:center;margin-bottom:16px;">
+          🚀 Vreau asta pentru afacerea mea
+        </a>
+
+        <div style="font-size:13px;color:var(--muted);line-height:1.8;">
+          ✓ Instalare în mai puțin de 24 ore<br>
+          ✓ Personalizat cu brandul tău<br>
+          ✓ Suport tehnic inclus
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section id="securitate">
+  <div class="container">
+    <div class="section-tag">Securitate</div>
+    <h2>Date protejate, <span>afacere sigură</span></h2>
+    <p class="section-sub">Suntem certificați în securitate cibernetică. Datele clienților tăi sunt în siguranță.</p>
+
+    <div class="security-grid">
+      <div class="security-card fade-up">
+        <div class="security-icon">🔐</div>
+        <div>
+          <h4>Criptare End-to-End</h4>
+          <p>Toate conversațiile sunt criptate. Nimeni nu poate intercepta datele clienților tăi.</p>
+        </div>
+      </div>
+      <div class="security-card fade-up">
+        <div class="security-icon">🛡️</div>
+        <div>
+          <h4>Conformitate GDPR</h4>
+          <p>Respectăm toate regulamentele europene privind protecția datelor personale.</p>
+        </div>
+      </div>
+      <div class="security-card fade-up">
+        <div class="security-icon">🔒</div>
+        <div>
+          <h4>Acces Controlat</h4>
+          <p>Datele sunt accesibile doar de către tine și echipa ta autorizată.</p>
+        </div>
+      </div>
+      <div class="security-card fade-up">
+        <div class="security-icon">☁️</div>
+        <div>
+          <h4>Backup Automat</h4>
+          <p>Datele sunt salvate automat. Nu pierzi nicio programare sau informație.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-badge fade-up">
+      <div class="cert-icon">🏆</div>
+      <div class="cert-text">Certificare în Securitate Cibernetică · Daniel Michnea, TopAiNexus</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--surface);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-tag">Contact</div>
+    <h2>Hai să <span>colaborăm</span></h2>
+
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <p class="section-sub" style="margin-bottom:32px;">
+          Suntem gata să automatizăm afacerea ta. Contactează-ne și îți răspundem în maxim 24 ore.
+        </p>
+
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Telefon (WhatsApp & apeluri)</div>
+            <div class="contact-value">
+              <a href="tel:+40773878448">0773 878 448</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🤖</div>
+          <div>
+            <div class="contact-label">Testează Receptionist AI (apel vocal)</div>
+            <div class="contact-value">
+              <a href="tel:+40373819798">+40 373 819 798</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">
+              <a href="mailto:topainexus@gmail.com">topainexus@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Sediu</div>
+            <div class="contact-value">Timișoara, România</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <div class="contact-label">Program</div>
+            <div class="contact-value">Luni – Vineri, 09:00 – 18:00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form fade-up">
+        <div class="form-group">
+          <label>Numele tău</label>
+          <input type="text" placeholder="ex: Ion Popescu">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="email@afacerea.ro">
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" placeholder="+40 7xx xxx xxx">
+        </div>
+        <div class="form-group">
+          <label>Ce te interesează?</label>
+          <select>
+            <option>Receptionist AI (Voce)</option>
+            <option>Chatbot AI (Web)</option>
+            <option>Automatizări Complete</option>
+            <option>Toate cele de mai sus</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mesaj</label>
+          <textarea placeholder="Spune-ne despre afacerea ta..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;justify-content:center;" onclick="handleSubmit(this)">
+          Trimite Mesajul →
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">TopAiNexus</a>
+    <ul class="footer-links">
+      <li><a href="#servicii">Servicii</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 TopAiNexus. Toate drepturile rezervate.</div>
+  </div>
+</footer>
+
+<script>
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Form submit
+function handleSubmit(btn) {
+  btn.textContent = 'Se trimite...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '✓ Mesaj trimis! Te contactăm în curând.';
+    btn.style.background = '#10B981';
+  }, 1500);
+}
+</script>
+
+</body>
+</html>
